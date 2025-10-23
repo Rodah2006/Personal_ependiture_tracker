@@ -1,12 +1,13 @@
 from fastapi import FastAPI
-from urls import expenses
+from expense_tracker.urls import expenses
 
-# create the FastAPI instance
-expense_tracker = FastAPI(title="Personal Expense Tracker")
+# Create the FastAPI app instance
+expense_tracker = FastAPI()
 
-# include routes
+# Include the routes from expenses.py
 expense_tracker.include_router(expenses.router)
 
+# Add a home route (so / shows something instead of 404)
 @expense_tracker.get("/")
-def home():
-    return {"message": "Welcome to the Personal Expense Tracker API "}
+def read_root():
+    return { "Welcome to your Expense Tracker API!"}
