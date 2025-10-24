@@ -27,7 +27,7 @@ class Expense(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     # Relationship: each expense belongs to one user
-    owner = relationship("User", back_populates="e
+    owner = relationship("User", back_populates="expenses")
 
 class Category(Base):
     __tablename__ = "categories"
